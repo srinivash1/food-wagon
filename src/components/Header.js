@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { LOGO_URI } from "../utils/constants";
 import useOnlineOfflineStatus from "../utils/useOnlineOfflineStatus";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [buttonName, setButtonName] = useState(true);
   const handleChangeButtonText = () => {
     setButtonName(!buttonName);
   };
+  const cartItems = useSelector(state => state.cart.cart);
   const {isOnline} = useOnlineOfflineStatus();
   return (
     <div className="flex justify-around items-center shadow-md">
@@ -26,7 +28,7 @@ const Header = () => {
           <li className="mr-5 cursor-pointer">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="mr-5 cursor-pointer">Cart</li>
+          <li className="mr-5 cursor-pointer">Cart - {cartItems.length}</li>
           <li className="mr-5 cursor-pointer">
             <button
               onClick={() => handleChangeButtonText()}

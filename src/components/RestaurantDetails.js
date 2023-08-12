@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetchRestaurantDetails from "../utils/useFetchRestaurantDetails";
 import ItemList from "./ItemList";
+import Accordion from "./Accordion";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
@@ -28,7 +29,11 @@ const RestaurantDetails = () => {
           </div>
           <hr className="mt-3" />
           <div>
-            <ItemList restaurantMenu={restaurantMenu}/>
+            {restaurantMenu.map((restaurantItems) => {
+              return (
+                <Accordion restaurantItems={restaurantItems.card.card}/>
+              )
+            })}
           </div>
         </>
       )}

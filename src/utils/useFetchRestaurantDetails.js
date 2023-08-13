@@ -13,7 +13,6 @@ const useFetchRestaurantDetails = (id) => {
     setLoading(true);
     try {
       const response = await axios.get(RESTAURANT_MENU_URI + id);
-      console.log(response.data.data);
       setRestaurantMenu(
         response.data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.slice(1,)
       );

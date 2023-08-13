@@ -28,7 +28,9 @@ const Header = () => {
           <li className="mr-5 cursor-pointer">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="mr-5 cursor-pointer">Cart - {cartItems.length}</li>
+          <li className="mr-5 cursor-pointer">
+            <Link to="/cart">Cart - {cartItems.length}</Link>
+          </li>
           <li className="mr-5 cursor-pointer">
             <button
               onClick={() => handleChangeButtonText()}

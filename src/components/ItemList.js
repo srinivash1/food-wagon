@@ -14,7 +14,7 @@ const ItemList = ({ restaurantItems }) => {
         return (
           <div
             key={item.card.info.id}
-            className="flex items-center p-4 border mb-4"
+            className="flex justify-between items-center p-4 border mb-4"
           >
             <div className="flex-grow">
               <h3 className="text-xl font-semibold">{item.card.info.name}</h3>

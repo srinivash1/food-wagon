@@ -4,6 +4,7 @@ import Header from './components/Header';
 import About from './components/About';
 import Contact from './components/Contact';
 import RestaurantDetails from './components/RestaurantDetails';
+import CartPage from './components/CartPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/about' element={<About />}/>
           <Route path='/contact' element={<Contact />}/>
           <Route path='/restaurantdetails/:id' element={<RestaurantDetails />}/>
+          <Route path='/cart' element={<CartPage />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

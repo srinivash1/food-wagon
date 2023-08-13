@@ -5,8 +5,9 @@ import { addToCart } from "../features/cart/cartSlice";
 
 const ItemList = ({ restaurantItems }) => {
   const dispatch = useDispatch();
-  const handleAddItems = (item) => {
-    dispatch(addToCart(item));
+  const handleAddItems = (item,quantity) => {
+    const itemWithQuantity = {...item,quantity}
+    dispatch(addToCart(itemWithQuantity));
   }
   return (
     <div className="restaurant-container">
@@ -29,7 +30,7 @@ const ItemList = ({ restaurantItems }) => {
                 alt={item.card.info.name}
                 className="w-24 h-24 object-cover"
               />
-              <button onClick={() => handleAddItems(item.card.info)} className="background-red">
+              <button onClick={() => handleAddItems(item.card.info,1)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 mt-2 rounded-md shadow-md transition duration-300">
                   Add
               </button>
             </div>

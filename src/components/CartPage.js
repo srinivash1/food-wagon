@@ -1,14 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {deleteFromCart} from '../features/cart/cartSlice'
+import { removeFromCart, deleteFromCart } from "../features/cart/cartSlice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
 
-  const removeItemsFromCart = () => {
-    dispatch(deleteFromCart())
-  }
+  const removeItemFromCart = (itemId) => {
+    dispatch(removeFromCart({ id: itemId }));
+  };
+
+  const deleteItemsFromCart = () => {
+    dispatch(deleteFromCart());
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -27,17 +31,28 @@ const CartPage = () => {
               >
                 <p className="text-xl font-semibold">{item.name}</p>
                 <p className="text-gray-600">₨ - {item.price / 100}</p>
+                <p className="text-xl font-semibold mt-4">
+                  Item Total: ₨ {(item.price / 100 * item.quantity).toFixed(2)}
+                </p>
+                <button
+                  onClick={() => removeItemFromCart(item.id)} // Pass the item ID to the function
+                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 mt-2 rounded-md shadow-md transition duration-300"
+                >
+                  Remove
+                </button>
               </div>
             ))}
           </div>
         )}
       </div>
-      <button onClick={removeItemsFromCart} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 mr-3 font-semibold rounded-full shadow-md transition duration-300">
-        Remove
-      </button>
-      <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">
-        CheckOut
-      </button>
+      <div className="flex justify-center">
+        <button
+          onClick={() => deleteItemsFromCart()}
+          className="bg-red-700 text-white py-2 px-4 rounded-full shadow-md transition duration-300"
+        >
+          Delete Cart
+        </button>
+      </div>
     </div>
   );
 };

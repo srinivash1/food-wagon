@@ -11,6 +11,10 @@ const Header = () => {
   };
   const cartItems = useSelector(state => state.cart.cart);
   const {isOnline} = useOnlineOfflineStatus();
+  let cartItemsCount = 0;
+  for(let i=0;i<cartItems.length;i++) {
+    cartItemsCount = cartItemsCount + cartItems[i].quantity;
+  }
   return (
     <div className="flex justify-around items-center shadow-md">
       <div>
@@ -29,7 +33,7 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="mr-5 cursor-pointer">
-            <Link to="/cart">Cart - {cartItems.length}</Link>
+            <Link to="/cart">Cart  {cartItemsCount}</Link>
           </li>
           <li className="mr-5 cursor-pointer">
             <button
